@@ -13,9 +13,9 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@main
       with:
-        type: 'zip'
-        filename: 'resources.zip'
-        exclusions: '*.git* .editorconfig README.md'
+        type: 'tar'
+        filename: 'resources.tar.gz'
+        exclusions: '*.git* README.md'
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "resources.zip"
+        artifacts: "resources.tar.gz"
