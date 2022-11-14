@@ -3,6 +3,8 @@ polygon-mainnet.infura.io
 polygon-rpc.com
 arb1.arbitrum.io
 bor.*.golem.network
+geth.*.golem.network
+*.dev.golem.network
 api.zksync.io
 ipfs.io
 dl.dropboxusercontent.com
