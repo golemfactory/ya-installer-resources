@@ -16,3 +16,5 @@ registry.hub.docker.com
 github.com
 api.github.com
 crates.io
+pypi.org
+files.pythonhosted.org
