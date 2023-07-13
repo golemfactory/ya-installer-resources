@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.golem.network/v1/certificate.schema.json",
+  "certificate": {
+    "keyUsage": "all",
+    "permissions": "all",
+    "publicKey": {
+      "algorithm": "EdDSA",
+      "key": "234bb4e002711a2155c5aa8c26097daa96ed463d69fc21f729a77b21da8c148a",
+      "parameters": {
+        "scheme": "Ed25519"
+      }
+    },
+    "subject": {
+      "displayName": "DevOps Team (INTERMEDIATE)",
+      "contact": {
+        "email": "devops@golem.network"
+      }
+    },
+    "validityPeriod": {
+      "notBefore": "2023-07-12T00:00:00Z",
+      "notAfter": "2024-07-01T00:00:00Z"
+    }
+  },
+  "signature": {
+    "algorithm": {
+      "hash": "sha512",
+      "encryption": "EdDSAOpenPGP"
+    },
+    "value": "05f12d4b5ab051f4471232fd22f69cfa01d478123cf91fdcdab1a9683ea333a21227055ea806f3be8aba9ae2c9c18e8831ab86fa0f424e027b30c0360ac48209",
+    "signer": {
+      "$schema": "https://schemas.golem.network/v1/certificate.schema.json",
+      "certificate": {
+        "keyUsage": "all",
+        "permissions": "all",
+        "subject": {
+          "displayName": "DevOps Team (ROOT)",
+          "contact": {
+            "email": "devops@golem.network"
+          }
+        },
+        "validityPeriod": {
+          "notBefore": "2023-07-12T00:00:00Z",
+          "notAfter": "2033-07-12T00:00:00Z"
+        },
+        "publicKey": {
+          "algorithm": "EdDSA",
+          "key": "c5cb35cd2f8e228e578f775eae936235e7704a19313c94954363d1cab2f64a6b",
+          "parameters": {
+            "scheme": "Ed25519"
+          }
+        }
+      },
+      "signature": {
+        "algorithm": {
+          "hash": "sha512",
+          "encryption": "EdDSAOpenPGP"
+        },
+        "value": "6189b6387bcad2a5444da33bc639e664deeacd55412f725c829ee5f680120288bffecede3d99fb036bf741c9c32b6976818585b85f5c07b51ca74325003d5308",
+        "signer": "self"
+      }
+    }
+  }
+}
