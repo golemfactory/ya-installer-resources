@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.golem.network/v1/certificate.schema.json",
+  "certificate": {
+    "keyUsage": "all",
+    "permissions": "all",
+    "subject": {
+      "displayName": "DevOps Team (ROOT)",
+      "contact": {
+        "email": "devops@golem.network"
+      }
+    },
+    "validityPeriod": {
+      "notBefore": "2023-07-12T00:00:00Z",
+      "notAfter": "2033-07-12T00:00:00Z"
+    },
+    "publicKey": {
+      "algorithm": "EdDSA",
+      "key": "c5cb35cd2f8e228e578f775eae936235e7704a19313c94954363d1cab2f64a6b",
+      "parameters": {
+        "scheme": "Ed25519"
+      }
+    }
+  },
+  "signature": {
+    "algorithm": {
+      "hash": "sha512",
+      "encryption": "EdDSAOpenPGP"
+    },
+    "value": "6189b6387bcad2a5444da33bc639e664deeacd55412f725c829ee5f680120288bffecede3d99fb036bf741c9c32b6976818585b85f5c07b51ca74325003d5308",
+    "signer": "self"
+  }
+}
