@@ -1,0 +1,18 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: "tar"
+          filename: "resources.tar.gz"
+          exclusions: "*.git* README.md resources.tar.gz"
