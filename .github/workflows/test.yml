@@ -15,5 +15,5 @@ jobs:
         with:
           type: "tar"
           filename: "resources.tar.gz"
-          exclusions: "*.git* README.md resources.tar.gz"
+          exclusions: "README.md resources.tar.gz"
           custom: "--warning=no-file-changed"
