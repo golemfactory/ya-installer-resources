@@ -11,9 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Archive Release
-        uses: thedoctor0/zip-release@0.7.1
+        uses: thedoctor0/zip-release@0.6.2
         with:
           type: "tar"
           filename: "resources.tar.gz"
           exclusions: "*.git* README.md resources.tar.gz"
-          custom: "--warning=no-file-changed"
