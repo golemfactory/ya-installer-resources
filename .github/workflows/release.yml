@@ -19,3 +19,22 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "resources.tar.gz"
+
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: create sample script
+        run: |
+          chmod +x prepare-deb-build.sh
+          ./prepare-deb-build.sh
+      - uses: jiro4989/build-deb-action@v3
+        with:
+          package: ya-installer-resources
+          package_root: .debpkg
+          maintainer: "Golem Factory <contact@golem.network>"
+          version: ${{ github.ref }} # refs/tags/v*.*.*
+          arch: 'amd64'
+          depends: 'libc6 (>= 2.2.1), git'
+          desc: 'Resources for Golem Provider installation.'
