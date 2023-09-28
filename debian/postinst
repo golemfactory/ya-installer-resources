@@ -6,5 +6,3 @@ resources_dir="${RESOURCES_UNPACK_DIR:-/tmp/ya-installer/}"
 
 ya-provider pre-install
 golemsp manifest-bundle add "${resources_dir}"
-
-rm -rf "${resources_dir}"
