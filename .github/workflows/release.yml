@@ -19,6 +19,7 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "resources.tar.gz"
+        prerelease: true
 
   build-deb:
     runs-on: ubuntu-latest
