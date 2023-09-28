@@ -53,7 +53,7 @@ jobs:
           maintainer: "Golem Factory <contact@golem.network>"
           version: ${{ github.ref }}
           arch: 'amd64'
-          depends: 'libc6 (>= 2.2.1), git'
+          depends: 'golem-provider'
           desc: 'Resources for Golem Provider installation.'
 
       - name: Upload Release Deb
