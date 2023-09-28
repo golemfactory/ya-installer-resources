@@ -4,3 +4,5 @@ resources_dir="${1:-/tmp/ya-installer/}"
 
 ya-provider pre-install
 golemsp manifest-bundle add "${resources_dir}"
+
+rm -r "${resources_dir}"

@@ -2,7 +2,7 @@ name: Release
 on: 
   push:
     tags:
-    - '*'
+    - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,16 +25,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: create sample script
+      - name: Prepare .deb directories
         run: |
-          chmod +x prepare-deb-build.sh
-          ./prepare-deb-build.sh
+          chmod +x debian/prepare-deb-build.sh
+          ./debian/prepare-deb-build.sh
       - uses: jiro4989/build-deb-action@v3
         with:
           package: ya-installer-resources
           package_root: .debpkg
           maintainer: "Golem Factory <contact@golem.network>"
-          version: ${{ github.ref }} # refs/tags/v*.*.*
+          version: ${{ github.ref }}
           arch: 'amd64'
           depends: 'libc6 (>= 2.2.1), git'
           desc: 'Resources for Golem Provider installation.'
+
