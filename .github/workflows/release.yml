@@ -25,12 +25,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get upload url
+        id: release_upload_url
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            let tag = context.payload.ref.replace(/.*\//, '');
+            let release =  await github.request("GET /repos/:owner/:repo/releases/tags/:tag", {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: tag
+            });
+            console.log(release.data.upload_url);
+            return release.data.upload_url
 
       - name: Prepare .deb directories
         run: |
           chmod +x debian/prepare-deb-build.sh
           ./debian/prepare-deb-build.sh
       - uses: jiro4989/build-deb-action@v3
+        id: deb
         with:
           package: ya-installer-resources
           package_root: .debpkg
@@ -39,4 +55,13 @@ jobs:
           arch: 'amd64'
           depends: 'libc6 (>= 2.2.1), git'
           desc: 'Resources for Golem Provider installation.'
+
+      - name: Upload Release Deb
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release_upload_url.outputs.result }}
+          asset_path: ${{ steps.deb.outputs.file_name }}
+          asset_content_type: application/vnd.debian.binary-package
 
