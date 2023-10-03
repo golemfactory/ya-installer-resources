@@ -43,18 +43,8 @@ jobs:
 
       - name: Prepare .deb directories
         run: |
-          chmod +x debian/prepare-deb-build.sh
-          ./debian/prepare-deb-build.sh
-      - uses: jiro4989/build-deb-action@v3
-        id: deb
-        with:
-          package: ya-installer-resources
-          package_root: .debpkg
-          maintainer: "Golem Factory <contact@golem.network>"
-          version: ${{ github.ref }}
-          arch: 'amd64'
-          depends: 'golem-provider (>= 0.13.0)'
-          desc: 'Resources for Golem Provider installation.'
+          chmod +x debian/build-deb.sh
+          ./debian/build-deb.sh ${{ github.ref }}
 
       - name: Upload Release Deb
         uses: actions/upload-release-asset@v1
@@ -62,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release_upload_url.outputs.result }}
-          asset_path: ${{ steps.deb.outputs.file_name }}
-          asset_name: ${{ steps.deb.outputs.file_name }}
+          asset_path: ${{ steps.deb.outputs.deb }}
+          asset_name: ${{ steps.deb.outputs.deb }}
           asset_content_type: application/vnd.debian.binary-package
 

@@ -1,0 +1,7 @@
+Package: ya-installer-resources
+Version: #version
+Maintainer: Golem Factory <contact@golem.network>
+Architecture: all
+Depends: golem-provider (>= 0.13.0)
+Priority: standard
+Description: Resources for Golem Provider installation.
