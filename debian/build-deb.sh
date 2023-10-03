@@ -4,7 +4,7 @@ set -e
 
 VERSION=$1
 
-tmp_dir=.debpkg/tmp/ya-installer
+tmp_dir=.debpkg/usr/lib/yagna/installer
 
 mkdir -p ${tmp_dir}
 mkdir -p .debpkg/DEBIAN
