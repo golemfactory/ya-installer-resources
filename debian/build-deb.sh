@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 VERSION=$1
 
 tmp_dir=.debpkg/tmp/ya-installer
@@ -16,9 +18,10 @@ cp debian/postinst .debpkg/DEBIAN/postinst
 chmod +x .debpkg/DEBIAN/postinst
 
 VERSION="$(echo "$VERSION" | sed -E "s,^refs/tags/,,")"
-sed -i "s/#version/${VERSION}/g" .debpkg/DEBIAN/control
+FIXED_VERSION="$(echo "$VERSION" | sed -E 's/^v//')"
+sed -i "s/#version/${FIXED_VERSION}/g" .debpkg/DEBIAN/control
 
 DEB_FILE="ya-installer-resources_${VERSION}.deb"
 
-dpkg-deb --build .debpkg "$DEB_FILE"\
+dpkg-deb --build .debpkg "$DEB_FILE"
 echo "deb=$DEB_FILE" >> "${GITHUB_OUTPUT}"

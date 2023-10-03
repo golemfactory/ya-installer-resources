@@ -25,6 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Build .deb
+        id: deb
+        run: |
+          chmod +x debian/build-deb.sh
+          ./debian/build-deb.sh ${{ github.ref }}
+
       - name: Get upload url
         id: release_upload_url
         uses: actions/github-script@0.9.0
@@ -40,11 +46,6 @@ jobs:
             });
             console.log(release.data.upload_url);
             return release.data.upload_url
-
-      - name: Prepare .deb directories
-        run: |
-          chmod +x debian/build-deb.sh
-          ./debian/build-deb.sh ${{ github.ref }}
 
       - name: Upload Release Deb
         uses: actions/upload-release-asset@v1
