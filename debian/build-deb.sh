@@ -13,9 +13,11 @@ cp -r certs/ ${tmp_dir}/certs
 cp -r whitelist/ ${tmp_dir}/whitelist
 cp -r golem-certs/ ${tmp_dir}/golem-certs
 
-cp debian/control .debpkg/DEBIAN/control
-cp debian/postinst .debpkg/DEBIAN/postinst
+cp debian/* .debpkg/DEBIAN/
+
+chmod +x .debpkg/DEBIAN/preinst
 chmod +x .debpkg/DEBIAN/postinst
+chmod +x .debpkg/DEBIAN/install.sh
 
 VERSION="$(echo "$VERSION" | sed -E "s,^refs/tags/,,")"
 FIXED_VERSION="$(echo "$VERSION" | sed -E 's/^v//')"

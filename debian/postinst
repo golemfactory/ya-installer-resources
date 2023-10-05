@@ -1,8 +1,6 @@
 #!/bin/bash
 
-set -e
+. /usr/share/debconf/confmodule
 
-resources_dir="${RESOURCES_UNPACK_DIR:-/usr/lib/yagna/installer/}"
-
-ya-provider pre-install
-golemsp manifest-bundle add "${resources_dir}"
+db_get golem/installation/user || true
+runuser -u "$RET" -- ./install.sh
