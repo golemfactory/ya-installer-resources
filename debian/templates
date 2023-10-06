@@ -1,0 +1,4 @@
+Template: golem/installation/user
+Type: string
+Default: root
+Description: User account that should be used to configure ya-provider.
