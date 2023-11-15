@@ -13,9 +13,9 @@ jobs:
     - name: Move release files
       run: |
         mkdir package
-        mv -r certs/* package/certs
-        mv -r golem-certs/* package/golem-certs
-        mv -r whitelist/* package/whitelist
+        mv certs/* package/certs
+        mv golem-certs/* package/golem-certs
+        mv whitelist/* package/whitelist
     - name: Archive Release
       uses: thedoctor0/zip-release@0.6.2 # last working version
       with:
