@@ -12,16 +12,18 @@ jobs:
     - uses: actions/checkout@v2
     - name: Move release files
       run: |
-        mkdir package
-        mv certs/* package/certs
-        mv golem-certs/* package/golem-certs
-        mv whitelist/* package/whitelist
+        mkdir -p package/certs/
+        mkdir -p package/golem-certs/
+        mkdir -p package/whitelist/
+        cp -r certs/* package/certs/
+        cp -r golem-certs/* package/golem-certs/
+        cp -r whitelist/* package/whitelist/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.6.2 # last working version
       with:
         type: 'tar'
         filename: 'resources.tar.gz'
-        directory: 'package'
+        path: 'package'
     - uses: ncipollo/release-action@v1
       id: create_release
       with:
