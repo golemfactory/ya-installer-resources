@@ -18,12 +18,9 @@ jobs:
         cp -r certs/* package/certs/
         cp -r golem-certs/* package/golem-certs/
         cp -r whitelist/* package/whitelist/
-    - name: Archive Release
-      uses: thedoctor0/zip-release@0.6.2 # last working version
-      with:
-        type: 'tar'
-        filename: 'resources.tar.gz'
-        path: 'package'
+        DST=$PWD
+        cd package && tar czvf "$DST/resources.tar.gz" *
+
     - uses: ncipollo/release-action@v1
       id: create_release
       with:
