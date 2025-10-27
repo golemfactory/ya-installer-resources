@@ -1,0 +1,6 @@
+#!/bin/bash
+
+. /usr/share/debconf/confmodule
+
+db_get golem/installation/user || true
+runuser -u "$RET" -- /usr/lib/yagna/installer/install.sh

@@ -3,6 +3,7 @@
 13.36.40.74
 geth2.golem.network
 geth.golem.network
+registry.golem.network
 mainnet.infura.io
 polygon-mainnet.infura.io
 polygon-rpc.com
@@ -18,3 +19,8 @@ api.github.com
 crates.io
 pypi.org
 files.pythonhosted.org
+dl-cdn.alpinelinux.org
+codeload.github.com
+registry.npmjs.org
+69.55.231.8
+api.satori.network

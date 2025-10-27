@@ -2,7 +2,7 @@ name: Release
 on: 
   push:
     tags:
-    - '*'
+    - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,12 +10,34 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v2
-    - name: Archive Release
-      uses: thedoctor0/zip-release@main
-      with:
-        type: 'tar'
-        filename: 'resources.tar.gz'
-        exclusions: '*.git* README.md'
+    - name: Move release files
+      run: |
+        mkdir -p package/certs/
+        mkdir -p package/golem-certs/
+        mkdir -p package/whitelist/
+        cp -r certs/* package/certs/
+        cp -r golem-certs/* package/golem-certs/
+        cp -r whitelist/* package/whitelist/
+        DST=$PWD
+        cd package && tar czvf "$DST/resources.tar.gz" *
+
     - uses: ncipollo/release-action@v1
+      id: create_release
       with:
         artifacts: "resources.tar.gz"
+        prerelease: true
+
+    - name: Build .deb
+      id: deb
+      run: |
+        chmod +x debian/build-deb.sh
+        ./debian/build-deb.sh ${{ github.ref }}
+    - name: Upload Release Deb
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.deb.outputs.deb }}
+        asset_name: ${{ steps.deb.outputs.deb }}
+        asset_content_type: application/vnd.debian.binary-package
