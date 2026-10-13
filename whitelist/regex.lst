@@ -1,4 +1,0 @@
-^bor[0-9]*\.golem\.network$
-^geth[0-9]*\.golem\.network$
-.*\.dev\.golem\.network$
-^geth\.testnet\.golem\.network$
