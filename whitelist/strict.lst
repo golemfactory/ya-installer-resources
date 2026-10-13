@@ -1,14 +1,8 @@
-3.122.207.83
-52.48.158.112
-13.36.40.74
 geth2.golem.network
 geth.golem.network
 registry.golem.network
 pypi.dev.golem.network
 downloads.dev.golem.network
-mainnet.infura.io
-polygon-mainnet.infura.io
-polygon-rpc.com
 api.zksync.io
 ipfs.io
 dl.dropboxusercontent.com
@@ -16,4 +10,3 @@ github.com
 api.github.com
 codeload.github.com
 69.55.231.8
-api.satori.network
